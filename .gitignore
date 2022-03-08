@@ -1,0 +1,3 @@
+*.o
+main
+.ccls-cache/
