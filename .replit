@@ -1,7 +1,7 @@
 compile = ["make", "-s"]
 run = "./main"
 entrypoint = "main.cpp"
-hidden = ["main", "**/*.o", "LICENSE", ".gitignore" ".ccls-cache", "Makefile"]
+hidden = ["main", "**/*.o", "LICENSE", ".gitignore", ".ccls-cache", "Makefile"]
 
 [languages.cpp]
 pattern = "**/*.{cpp,h}"

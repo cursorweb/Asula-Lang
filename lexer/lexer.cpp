@@ -5,7 +5,9 @@ Lexer::Lexer(std::string code) {
 }
 
 std::vector<Token> Lexer::lex() {
-    
+    while (i < code.length()) {
+        
+    }
 }
 
 
