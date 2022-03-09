@@ -9,7 +9,7 @@ var i(5)
 There are no semicolons.
 
 # Example programs
-These are simple programs to show you around Asula! The file extension for a typical Asula file is `.asu`. For example `main.asu` is the main file you run.
+These are simple programs to show you around Asula! The file extension for a typical Asula file is `.asu`. For example `main.asu` is the main file you run. [See more programs.](./idea/examples.md)
 
 ## Hello, World
 ```
@@ -93,16 +93,6 @@ elif a < b
 else
     print("a = b")
 end
-```
-
-## Edge cases
-Empty variables use `()`:
-```
-var a # invalid
-var a() # correct
-
-ret # invalid
-ret() # correct
 ```
 
 # Europa Lang

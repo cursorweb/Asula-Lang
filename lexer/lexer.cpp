@@ -2,16 +2,30 @@
 
 Lexer::Lexer(std::string code) {
     this->code = code;
+    length = code.length();
 }
 
 std::vector<Token> Lexer::lex() {
-    while (i < code.length()) {
-        
+    while (i < length) {
+        char c = peek();
+
+        switch (c) {
+            case '+':
+                break;
+        }
     }
     
     tokens.push_back(Token(TType::TEOF, LineInfo(line, col)));
     
     return tokens;
+}
+
+char Lexer::peek(int n) {
+    if (i + n > code.length()) {
+        return '\0'; // invalid
+    }
+
+    return code[i + n];
 }
 
 

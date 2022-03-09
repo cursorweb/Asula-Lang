@@ -16,9 +16,12 @@ class Lexer {
     size_t col;
 
     size_t i = 0;
+    size_t length;
 
     std::vector<Token> tokens;
-    
+
+    char peek(int n = 0);
+    char next();
 public:
     Lexer(std::string code);
     std::vector<Token> lex();
@@ -39,6 +42,7 @@ enum class TType {
     Minus,
     Times,
     Divide,
+    TEOF
 };
 
 
