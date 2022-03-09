@@ -12,6 +12,8 @@ std::vector<Token> Lexer::lex() {
         switch (c) {
             case '+':
                 break;
+            case '-':
+                break;
         }
     }
     

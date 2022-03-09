@@ -2,8 +2,8 @@ print("Copyright (c) 2022 Coder100
 (jk it's mit)")
 
 class Copyright
-    # you don't need a new class, if there isn't one
-    # we make it ourselves.
+    # you don't need a new method, if there isn't one
+    # we make it ourselves. (it does nothing)
 
     def state()
         print("MIT license open up")

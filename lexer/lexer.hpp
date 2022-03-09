@@ -38,10 +38,65 @@ struct LineInfo {
 
 
 enum class TType {
+    // operators
     Plus,
     Minus,
     Times,
     Divide,
+    Pow,
+
+    // brackets
+    LParen,
+    RParen,
+
+    // comparisions
+    Not,
+    EqEq,
+    NeEq,
+    LessEq,
+    GreaterEq,
+    Less,
+    Greater,
+
+    // Assignment
+    Eq,
+    PlusEq,
+    MinusEq,
+    TimesEq,
+    DivideEq,
+    PowEq,
+
+    // Logic
+    And,
+    Or,
+    Ques,
+    Col,
+
+    // Other
+    Dollar,
+    Dot,
+    Comma,
+
+    // Keywords
+    For,
+    While,
+
+    If,
+    Elif,
+    Else,
+
+    True,
+    False,
+
+    Ret,
+    Def,
+    
+
+    // Literals
+    String,
+    Number,
+    Identifier,
+
     TEOF
 };
 
