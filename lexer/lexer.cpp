@@ -8,6 +8,10 @@ std::vector<Token> Lexer::lex() {
     while (i < code.length()) {
         
     }
+    
+    tokens.push_back(Token(TType::TEOF, LineInfo(line, col)));
+    
+    return tokens;
 }
 
 
