@@ -51,10 +51,10 @@ print(sum(1, 2, 3))
 ## Modules
 Asula can directly execute a file you give it, unlike europa lang.
 ```
-$("./hello.asl")
+$("./hello.asu")
 print("World!")
 
-# ./hello.asl
+# ./hello.asu
 print("Hello, ")
 ```
 
