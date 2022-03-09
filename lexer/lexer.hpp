@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-#include "val.hpp"
+#include "../util/val.hpp"
 
 
 class Token;

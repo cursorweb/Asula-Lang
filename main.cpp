@@ -1,7 +1,9 @@
 #include <iostream>
 #include <string>
 
-#include "lexer.hpp"
+#include "lexer/lexer.hpp"
+#include "parser/parser.hpp"
+#include "run/run.hpp"
 
 
 int main() {
