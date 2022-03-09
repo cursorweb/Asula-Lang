@@ -8,7 +8,8 @@ var i(5)
 
 There are no semicolons.
 
-Instead, we have the `end` statement.
+# Example programs
+These are simple programs to show you around Asula! The file extension for a typical Asula file is `.asu`. For example `main.asu` is the main file you run.
 
 ## Hello, World
 ```

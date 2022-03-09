@@ -5,7 +5,7 @@
 
 
 int main() {
-    Token token(TType::Plus, Val(5.34));
+    Token token(TType::Plus, LineInfo(), Val(5.34));
 
     std::cout << (int)token.type << " " << token.val.number << std::endl;
     
