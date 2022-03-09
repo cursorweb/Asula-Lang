@@ -6,13 +6,37 @@ For example, variables do not use `=` signs:
 var i(5)
 ```
 
-There are no semicolons, nor are there blocks.
+There are no semicolons.
 
 Instead, we have the `end` statement.
 
 ## Hello, World
 ```
 print("Hello World!")
+```
+
+## Null Type
+`()` is actually the null type! 
+```
+print(()) # => ()
+var a(()) # same as var a()
+if (a == ())
+    print("a is null! Proof: " + a) # <= ()
+else
+    print("a has a value! a:" + a)
+end
+```
+
+## Blocks
+```
+block
+    var a(5)
+    block
+        var a(3)
+        print(a)
+    end
+    print(a)
+end
 ```
 
 ## Functions
@@ -82,3 +106,5 @@ ret() # correct
 
 # Europa Lang
 Asula is in a way related to europa lang. Originally, someone else was meant to create asula lang (J4Mirror), however, they never did, so I will!
+
+Now, if I get an `Option::unwrap()` on a `None` value, I can go here for a segfault!
