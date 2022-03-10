@@ -11,10 +11,8 @@
 
 class Lexer {
     std::string code;
-    std::string file;
 
-    size_t line = 1;
-    size_t col = 1;
+    LineInfo lf = LineInfo(1, 1);
 
     size_t i = 0;
     size_t length;

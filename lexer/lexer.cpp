@@ -2,7 +2,7 @@
 
 Lexer::Lexer(std::string code, std::string file) {
     this->code = code;
-    this->file = file;
+    this->lf.file = file;
     
     length = code.length();
 }
@@ -80,7 +80,7 @@ std::vector<Token> Lexer::lex() {
                 continue;
             
             default:
-                throw Error(LineInfo(line, col), std::string("Unexpected token ") + c);
+                throw Error(lf, std::string("Unexpected token ") + c);
                 break;
         }
     }
@@ -108,12 +108,12 @@ bool Lexer::consume(char c) {
 }
 
 void Lexer::next() {
-    if (code[i] == '\n') line++;
+    if (code[i] == '\n') lf.line++;
 
     i++;
-    col++;
+    lf.col++;
 }
 
 void Lexer::new_token(TType type, Val val) {
-    tokens.push_back(Token(type, LineInfo(line, col), val));
+    tokens.push_back(Token(type, LineInfo(lf.line, lf.col), val));
 }
