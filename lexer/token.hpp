@@ -84,6 +84,8 @@ public:
     Val val;
 
     Token(TType type, LineInfo lf, Val val);
+
+    static std::string to_string(TType type);
 };
 
 #endif
