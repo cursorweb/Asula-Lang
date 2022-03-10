@@ -1,18 +1,31 @@
 #include <iostream>
 #include <string>
 
+#include <fstream>
+
 #include "lexer/lexer.hpp"
 #include "parser/parser.hpp"
 #include "run/run.hpp"
 
 
 int main() {
-    Token token(TType::Plus, LineInfo(), Val(5.34));
-
-    std::cout << (int)token.type << " " << token.val.number << std::endl;
+    std::string code;
     
-    std::string string;
-    std::cout << "Name: ";
-    std::getline(std::cin, string);
-    std::cout << "'" << string << "' " << string.length() << std::endl;
+    std::ifstream file("./idea/test/lexer.asu");
+
+    if (file.is_open()) {
+        while (file) {
+            std::getline(file, code);
+        }
+    } else {
+        std::cout << "Couldn't open file" << std::endl;
+    }
+    
+    file.close();
+
+    Lexer lexer(code);
+    std::vector<Token> tokens = lexer.lex();
+    for (Token token : tokens) {
+        std::cout << (int)token.type << std::endl;
+    }
 }

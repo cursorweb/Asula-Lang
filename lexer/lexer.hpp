@@ -21,7 +21,7 @@ class Lexer {
 
     char peek(int n = 0);
     bool consume(char c);
-    char next();
+    void next();
 
     void new_token(TType type, Val val = Val());
 

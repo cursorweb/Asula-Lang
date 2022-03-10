@@ -104,7 +104,7 @@ bool Lexer::consume(char c) {
     return false;
 }
 
-char Lexer::next() {
+void Lexer::next() {
     if (code[i] == '\n') line++;
 
     i++;
