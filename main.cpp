@@ -26,7 +26,6 @@ int main() {
     file.close();
 
     Lexer lexer(code);
-<<<<<<< HEAD
 
     try {
         std::vector<Token> tokens = lexer.lex();
@@ -38,10 +37,5 @@ int main() {
         return 1;
     } catch (Error e) {
         e.show_error();
-=======
-    std::vector<Token> tokens = lexer.lex();
-    for (Token token : tokens) {
-        std::cout << Token::to_string(token.type) << std::endl;
->>>>>>> ae66ab332038d03766e388b0a7c40a16f5e05d44
     }
 }
