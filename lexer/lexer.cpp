@@ -78,7 +78,7 @@ std::vector<Token> Lexer::lex() {
                 continue;
             
             default:
-                throw Error(LineInfo(line, col), "Unexpected token " + c);
+                throw Error(LineInfo(line, col), std::string("Unexpected token ") + c);
                 break;
         }
     }

@@ -31,11 +31,10 @@ int main() {
         std::vector<Token> tokens = lexer.lex();
 
         for (Token token : tokens) {
-            std::cout << (int)token.type << std::endl;
+            std::cout << Token::to_string(token.type) << std::endl;
         }
-
-        return 1;
     } catch (Error e) {
         e.show_error();
+        return 1;
     }
 }
