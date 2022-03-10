@@ -8,5 +8,5 @@ Error::Error(LineInfo lf, std::string error) {
 
 void Error::show_error() {
     // [1:2] error
-    std::cout << "[" << lf.line << ":" << lf.col << "] : " << error << std::endl;
+    std::cout << lf.file << " " << "[" << lf.line << ":" << lf.col << "] " << error << std::endl;
 }

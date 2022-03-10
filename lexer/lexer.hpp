@@ -11,6 +11,7 @@
 
 class Lexer {
     std::string code;
+    std::string file;
 
     size_t line = 1;
     size_t col = 1;
@@ -27,7 +28,7 @@ class Lexer {
     void new_token(TType type, Val val = Val());
 
 public:
-    Lexer(std::string code);
+    Lexer(std::string code, std::string file);
     std::vector<Token> lex();
 };
 

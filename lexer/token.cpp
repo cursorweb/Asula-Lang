@@ -2,9 +2,10 @@
 
 
 // lineinfo
-LineInfo::LineInfo(size_t line, size_t col) {
+LineInfo::LineInfo(size_t line, size_t col, std::string file) {
     this->line = line;
     this->col = col;
+    this->file = file;
 }
 
 

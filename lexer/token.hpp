@@ -8,7 +8,9 @@ struct LineInfo {
     size_t line;
     size_t col;
 
-    LineInfo(size_t line = 0, size_t col = 0);
+    std::string file;
+
+    LineInfo(size_t line = 0, size_t col = 0, std::string file = "");
 };
 
 

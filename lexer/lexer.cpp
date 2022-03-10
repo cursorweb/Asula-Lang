@@ -1,7 +1,9 @@
 #include "lexer.hpp"
 
-Lexer::Lexer(std::string code) {
+Lexer::Lexer(std::string code, std::string file) {
     this->code = code;
+    this->file = file;
+    
     length = code.length();
 }
 

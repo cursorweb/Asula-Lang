@@ -25,7 +25,7 @@ int main() {
     
     file.close();
 
-    Lexer lexer(code);
+    Lexer lexer(code, "./idea/test/lexer.asu");
 
     try {
         std::vector<Token> tokens = lexer.lex();
