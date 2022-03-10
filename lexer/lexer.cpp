@@ -78,6 +78,7 @@ std::vector<Token> Lexer::lex() {
                 continue;
             
             default:
+                
                 break;
         }
     }

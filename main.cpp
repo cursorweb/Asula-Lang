@@ -26,6 +26,6 @@ int main() {
     Lexer lexer(code);
     std::vector<Token> tokens = lexer.lex();
     for (Token token : tokens) {
-        std::cout << (int)token.type << std::endl;
+        std::cout << Token::to_string(token.type) << std::endl;
     }
 }
