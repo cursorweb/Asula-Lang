@@ -8,8 +8,7 @@ struct LineInfo {
     size_t line;
     size_t col;
 
-    LineInfo();
-    LineInfo(size_t line, size_t col);
+    LineInfo(size_t line = 0, size_t col = 0);
 };
 
 

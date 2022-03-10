@@ -7,6 +7,8 @@
 #include "parser/parser.hpp"
 #include "run/run.hpp"
 
+#include "util/error.hpp"
+
 
 int main() {
     std::string code;
@@ -24,8 +26,16 @@ int main() {
     file.close();
 
     Lexer lexer(code);
-    std::vector<Token> tokens = lexer.lex();
-    for (Token token : tokens) {
-        std::cout << (int)token.type << std::endl;
+
+    try {
+        std::vector<Token> tokens = lexer.lex();
+
+        for (Token token : tokens) {
+            std::cout << (int)token.type << std::endl;
+        }
+
+        return 1;
+    } catch (Error e) {
+        e.show_error();
     }
 }

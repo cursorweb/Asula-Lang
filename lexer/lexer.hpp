@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "../util/val.hpp"
+#include "../util/error.hpp"
 #include "token.hpp"
 
 
