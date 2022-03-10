@@ -1,0 +1,11 @@
+def fib(n)
+    if (n < 2)
+        ret(n)
+    else
+        ret(fib(n - 1) + fib(n - 2))
+    end
+end
+
+for (var i(0)) (i < 10) (i += 1)
+    print(fib(i))
+end

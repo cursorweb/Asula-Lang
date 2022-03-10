@@ -120,15 +120,15 @@ print(1 / 0 == inf) # <= true
 ```
 
 ### The NaN type
-When a value is invalid, then the result is `(!)` (NaN). This can be added to any other value, and it returns `(!)`.
+When a value is invalid, then the result is `nan`. This can be added to any other value, and it returns `nan`.
 
 ```
-print("5" / 3) # <= (!)
-print("5" / 3 + 3) # <= (!)
-print((!) == (!)) # <= true
+print("5" / 3) # <= nan
+print("5" / 3 + 3) # <= nan
+print(nan == nan) # <= true
 ```
 
-Note `(!)` is reflexive. `(!) == (!)` so be **careful**.
+Note `nan` is reflexive. `nan` so be **careful**.
 
 # Edge cases
 Due to asula lang's unique syntax, there are many edge cases to consider.
