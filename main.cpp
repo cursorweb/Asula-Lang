@@ -43,7 +43,7 @@ int main() {
                         break;
 
                     case Val::String:
-                        std::cout << " " << token.val.string;
+                        std::cout << " `" << token.val.string << "'";
                         break;
 
                     default: break;

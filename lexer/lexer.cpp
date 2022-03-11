@@ -1,6 +1,6 @@
 #include "lexer.hpp"
 
-
+std::map<std::string, TType> keywords {};
 
 Lexer::Lexer(std::string code, std::string file) {
     this->code = code;

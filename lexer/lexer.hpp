@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include <map>
 
 #include "../util/val.hpp"
 #include "../util/error.hpp"
