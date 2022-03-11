@@ -12,7 +12,7 @@
 class Lexer {
     std::string code;
 
-    LineInfo lf = LineInfo(1, 1);
+    LineInfo lf = LineInfo(1, 0);
 
     size_t i = 0;
     size_t length;

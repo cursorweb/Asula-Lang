@@ -20,7 +20,7 @@ std::vector<Token> Lexer::lex() {
                 new_token(consume('=') ? TType::MinusEq : TType::Minus);
                 break;
             case '*':
-                new_token(consume('*') ? TType::TimesEq : TType::Times);
+                new_token(consume('=') ? TType::TimesEq : TType::Times);
                 break;
             case '/':
                 new_token(consume('=') ? TType::DivideEq : TType::Divide);
@@ -84,7 +84,8 @@ std::vector<Token> Lexer::lex() {
                 break;
         }
     }
-    
+
+    next();
     new_token(TType::TEOF);
     
     return tokens;
@@ -108,10 +109,14 @@ bool Lexer::consume(char c) {
 }
 
 void Lexer::next() {
-    if (code[i] == '\n') lf.line++;
+    if (peek() == '\n') {
+        lf.line++;
+        lf.col = 0;
+    } else {
+        lf.col++;
+    }
 
     i++;
-    lf.col++;
 }
 
 void Lexer::new_token(TType type, Val val) {

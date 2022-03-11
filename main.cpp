@@ -16,14 +16,15 @@ int main() {
     std::ifstream file("./idea/test/lexer.asu");
 
     if (file.is_open()) {
-        while (file) {
-            std::getline(file, code);
+        char c;
+        while ((c = file.get()) != EOF) {
+            code += c;
         }
     } else {
         std::cout << "Couldn't open file" << std::endl;
     }
     
-    file.close();
+    file.close();;
 
     Lexer lexer(code, "./idea/test/lexer.asu");
 
@@ -31,7 +32,7 @@ int main() {
         std::vector<Token> tokens = lexer.lex();
 
         for (Token token : tokens) {
-            std::cout << Token::to_string(token.type) << std::endl;
+            std::cout << Token::to_string(token.type) << ": { l: " << token.lf.line << ", c: " << token.lf.col << " }" << std::endl;
         }
     } catch (Error e) {
         e.show_error();
