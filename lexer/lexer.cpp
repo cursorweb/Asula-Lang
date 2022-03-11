@@ -1,5 +1,7 @@
 #include "lexer.hpp"
 
+
+
 Lexer::Lexer(std::string code, std::string file) {
     this->code = code;
     this->lf.file = file;
@@ -73,6 +75,30 @@ std::vector<Token> Lexer::lex() {
             case ',':
                 new_token(TType::Comma);
                 break;
+
+            case '"':
+            case '\'': {
+                char end = code[i - 1];
+                
+                c = peek();
+
+                std::string string;
+                string += c;
+
+                next();
+
+                while ((c = peek()) != end && is_valid(c)) {
+                    string += c;
+                    
+                    next();
+                }
+
+                if (!consume(end)) {
+                    throw Error(lf, "Unterminated string.");
+                }
+
+                new_token(TType::String, string);
+            } break;
             
             case ' ':
             case '\r':
