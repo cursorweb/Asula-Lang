@@ -15,10 +15,10 @@ public:
     Type type;
 
     std::string string;
-    float number;
+    double number;
 
     Val(std::string val);
-    Val(float val);
+    Val(double val);
     Val();
 };
 

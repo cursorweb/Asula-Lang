@@ -33,7 +33,25 @@ int main() {
         std::vector<Token> tokens = lexer.lex();
 
         for (Token token : tokens) {
-            std::cout << Token::to_string(token.type) << ": { l: " << token.lf.line << ", c: " << token.lf.col << " }" << std::endl;
+            std::cout <<
+                "'" << Token::to_string(token.type) << "':";
+
+            if (token.val.type != Val::Null) {
+                switch (token.val.type) {
+                    case Val::Number:
+                        std::cout << " " << token.val.number;
+                        break;
+
+                    case Val::String:
+                        std::cout << " " << token.val.string;
+                        break;
+
+                    default: break;
+                }
+            }
+            
+            std::cout << " { l: " << token.lf.line << ", c: " << token.lf.col << " }"
+            << std::endl;
         }
     } catch (Error e) {
         e.show_error();

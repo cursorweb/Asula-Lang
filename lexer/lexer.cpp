@@ -95,8 +95,7 @@ std::vector<Token> Lexer::lex() {
                 } else if (is_num(c)) {
                     std::string num;
                     num += c;
-
-                    next();
+                    
                     c = peek();
 
                     while (is_num(c) || c == '\'') {
@@ -132,7 +131,7 @@ std::vector<Token> Lexer::lex() {
                         }
                     }
 
-                    float f = std::stof(num);
+                    double f = std::stod(num);
 
                     new_token(TType::Number, f);
                 } else {

@@ -56,8 +56,8 @@ std::string Token::to_string(TType type) {
         tok(False, "false")
         tok(Ret, "ret")
         tok(Def, "def")
-        tok(String, "string literal")
-        tok(Number, "number literal")
+        tok(String, "string")
+        tok(Number, "number")
         tok(Identifier, "identifier")
         tok(TEOF, "EOF")
     }
