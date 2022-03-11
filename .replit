@@ -1,5 +1,5 @@
 compile = ["make", "-s"]
-run = "./main"
+run = "./main idea/test/lexer.asu"
 entrypoint = "main.cpp"
 hidden = ["main", "**/*.o", "LICENSE", ".gitignore", ".ccls-cache", "Makefile"]
 

@@ -9,7 +9,7 @@ var i(5)
 There are no semicolons.
 
 # Example programs
-These are simple programs to show you around Asula! The file extension for a typical Asula file is `.asu`. For example `main.asu` is the main file you run. [See more programs.](./idea/examples.md)
+These are simple programs to show you around Asula! The file extension for a typical Asula file is `.asu`. For example `main.asu` is the main file you run. [See more programs...](./idea/examples.md)
 
 ## Hello, World
 ```
@@ -82,13 +82,13 @@ end
 `super` and `self` are automatically defined 'variables' you can use.
 
 ## Control Flow
-You can either use ternary or if statements, however, unline europa, if statements are not expressions.
+You can either use ternary or if statements, however, unlike europa, if statements are not expressions.
 ```
 var a(5), b(6)
 
-if a > b
+if (a > b)
     print("a > b")
-elif a < b
+elif (a < b)
     print('a < b')
 else
     print("a = b")

@@ -9,52 +9,59 @@
 
 #include "util/error.hpp"
 
+std::string read_file(char* file);
 
-int main() {
-    std::string code;
-    
-    // optimization: directly read in lexer
-    std::ifstream file("./idea/test/lexer.asu");
 
-    if (file.is_open()) {
-        char c;
-        while ((c = file.get()) != EOF) {
-            code += c;
-        }
-    } else {
-        std::cout << "Couldn't open file" << std::endl;
+int main(int argc, char** argv) {
+    if (argc != 2) {
+        // todo: repl?
+        std::cout << "Usage: asula <file>" << std::endl;
+        return 1;
     }
-    
-    file.close();
 
-    Lexer lexer(code, "./idea/test/lexer.asu");
+
+    // file reader
+    char* dir = argv[1];
+    std::string code;
 
     try {
-        std::vector<Token> tokens = lexer.lex();
+        code = read_file(dir);
+    } catch(...) { return 1; }
 
-        for (Token token : tokens) {
-            std::cout <<
-                "'" << Token::to_string(token.type) << "':";
+    
+    // lexer
+    Lexer lexer(code, dir);
+    std::vector<Token> tokens;
 
-            if (token.val.type != Val::Null) {
-                switch (token.val.type) {
-                    case Val::Number:
-                        std::cout << " " << token.val.number;
-                        break;
-
-                    case Val::String:
-                        std::cout << " `" << token.val.string << "'";
-                        break;
-
-                    default: break;
-                }
-            }
-            
-            std::cout << " { l: " << token.lf.line << ", c: " << token.lf.col << " }"
-            << std::endl;
-        }
+    try {
+        tokens = lexer.lex();
     } catch (Error e) {
         e.show_error();
         return 1;
     }
+
+
+    // parser
+
+
+    // interpreter
+}
+
+std::string read_file(char* dir) {
+    std::string out;
+    std::ifstream file(dir);
+
+    if (file.is_open()) {
+        char c;
+        while ((c = file.get()) != EOF) {
+            out += c;
+        }
+    } else {
+        std::cout << "Couldn't open file '" << dir << "'." << std::endl;
+        throw;
+    }
+    
+    file.close();
+
+    return out;
 }
