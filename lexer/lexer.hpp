@@ -23,6 +23,10 @@ class Lexer {
     bool consume(char c);
     void next();
 
+    bool is_alpha(char c);
+    bool is_num(char c);
+    bool is_alphanum(char c);
+
     void new_token(TType type, Val val = Val());
 
 public:

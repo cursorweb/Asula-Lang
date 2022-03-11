@@ -13,6 +13,7 @@
 int main() {
     std::string code;
     
+    // optimization: directly read in lexer
     std::ifstream file("./idea/test/lexer.asu");
 
     if (file.is_open()) {
@@ -24,7 +25,7 @@ int main() {
         std::cout << "Couldn't open file" << std::endl;
     }
     
-    file.close();;
+    file.close();
 
     Lexer lexer(code, "./idea/test/lexer.asu");
 

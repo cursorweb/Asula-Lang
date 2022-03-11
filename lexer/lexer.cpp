@@ -80,7 +80,64 @@ std::vector<Token> Lexer::lex() {
                 continue;
             
             default:
-                throw Error(lf, std::string("Unexpected token ") + c);
+                if (is_alpha(c)) {
+                    std::string identifier;
+                    identifier += c;
+
+                    next();
+
+                    while (is_alphanum(c = peek())) {
+                        identifier += c;
+                        next();
+                    }
+
+                    new_token(TType::Identifier, identifier);
+                } else if (is_num(c)) {
+                    std::string num;
+                    num += c;
+
+                    next();
+                    c = peek();
+
+                    while (is_num(c) || c == '\'') {
+                        if (c == '\'') {
+                            next();
+                            c = peek();
+                            continue;
+                        }
+
+                        num += c;
+
+                        next();
+                        c = peek();
+                    }
+
+                    if (c == '.') {
+                        num += '.';
+
+                        next();
+                        c = peek();
+
+                        while (is_num(c) || c == '\'') {
+                            if (c == '\'') {
+                                next();
+                                c = peek();
+                                continue;
+                            }
+
+                            num += c;
+
+                            next();
+                            c = peek();
+                        }
+                    }
+
+                    float f = std::stof(num);
+
+                    new_token(TType::Number, f);
+                } else {
+                    throw Error(lf, std::string("Unexpected token ") + c);
+                }
                 break;
         }
     }
@@ -117,6 +174,18 @@ void Lexer::next() {
     }
 
     i++;
+}
+
+bool Lexer::is_alpha(char c) {
+    return 'a' <= tolower(c) && tolower(c) <= 'z';
+}
+
+bool Lexer::is_num(char c) {
+    return '0' <= c && c <= '9';
+}
+
+bool Lexer::is_alphanum(char c) {
+    return is_alpha(c) || is_num(c);
 }
 
 void Lexer::new_token(TType type, Val val) {
