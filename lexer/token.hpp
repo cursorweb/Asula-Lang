@@ -67,6 +67,12 @@ enum class TType {
 
     Ret,
     Def,
+
+    Var,
+    Class,
+
+    End,
+    Block,
     
 
     // Literals

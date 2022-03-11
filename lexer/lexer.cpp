@@ -1,6 +1,20 @@
 #include "lexer.hpp"
 
-std::map<std::string, TType> keywords {};
+static std::map<std::string, TType> keywords {
+    { "for", TType::For },
+    { "while", TType::While },
+    { "if", TType::If },
+    { "elif", TType::Elif },
+    { "else", TType::Else },
+    { "true", TType::True },
+    { "false", TType::False },
+    { "ret", TType::Ret },
+    { "def", TType::Def },
+    { "var", TType::Var },
+    { "class", TType::Class },
+    { "end", TType::End },
+    { "block", TType::Block },
+};
 
 Lexer::Lexer(std::string code, std::string file) {
     this->code = code;
@@ -80,12 +94,7 @@ std::vector<Token> Lexer::lex() {
             case '\'': {
                 char end = code[i - 1];
                 
-                c = peek();
-
                 std::string string;
-                string += c;
-
-                next();
 
                 while ((c = peek()) != end && is_valid(c)) {
                     string += c;
@@ -121,7 +130,11 @@ std::vector<Token> Lexer::lex() {
                         next();
                     }
 
-                    new_token(TType::Identifier, identifier);
+                    if (keywords.find(identifier) != keywords.end()) {
+                        new_token(keywords[identifier]);
+                    } else {
+                        new_token(TType::Identifier, identifier);
+                    }
                 } else if (is_num(c)) {
                     std::string num;
                     num += c;
