@@ -78,13 +78,17 @@ std::vector<Token> Lexer::lex() {
             case '\r':
             case '\n':
                 continue;
+
+            case '#':
+                while ((c = peek()) != '\n' && is_valid(c)) {
+                    next();
+                }
+                break;
             
             default:
                 if (is_alpha(c)) {
                     std::string identifier;
                     identifier += c;
-
-                    next();
 
                     while (is_alphanum(c = peek())) {
                         identifier += c;
@@ -185,6 +189,10 @@ bool Lexer::is_num(char c) {
 
 bool Lexer::is_alphanum(char c) {
     return is_alpha(c) || is_num(c);
+}
+
+bool Lexer::is_valid(char c) {
+    return c != '\0';
 }
 
 void Lexer::new_token(TType type, Val val) {

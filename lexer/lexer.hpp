@@ -27,6 +27,8 @@ class Lexer {
     bool is_num(char c);
     bool is_alphanum(char c);
 
+    bool is_valid(char c);
+
     void new_token(TType type, Val val = Val());
 
 public:
