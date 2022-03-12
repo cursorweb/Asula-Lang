@@ -1,0 +1,11 @@
+expr => equality
+
+equality => comparison ( ( "==" | "!=" ) comparison )*
+comparison => add ( ( "<" | ">" | "<=" | ">=" ) add )*
+
+add => mult ( ( "+" | "-" ) mult )*
+mult => unary ( ( "*" | "/" ) unary )*
+
+unary => ( ( "!" | "-" | "+" ) unary )* | primary
+
+primary => NUMBER | STRING | "true" | "false" | "(" ")" | "(" expr ")"
