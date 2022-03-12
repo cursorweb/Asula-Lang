@@ -4,6 +4,6 @@ Parser::Parser(std::vector<Token> tokens) {
     this->tokens = tokens;
 }
 
-Parse::parse() {
+void Parser::parse() {
     
 }

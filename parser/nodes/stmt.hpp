@@ -1,12 +1,12 @@
 #ifndef STMT_HPP
 #define STMT_HPP
 
+
+
+
 // visitor list
 template<typename C>
-class StmtVisitor {
-public:
-    // virtual C visit();
-};
+class StmtVisitor;
 
 
 // stmt list
@@ -18,5 +18,13 @@ public:
 
 
 // nodes
+
+
+// visitor list
+template<typename C>
+class StmtVisitor {
+public:
+    // virtual C visit();
+};
 
 #endif

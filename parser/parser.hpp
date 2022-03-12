@@ -3,6 +3,8 @@
 
 #include <vector>
 
+#include "nodes/expr.hpp"
+#include "nodes/stmt.hpp"
 #include "../lexer/token.hpp"
 
 
@@ -11,7 +13,7 @@ class Parser {
 
 public:
     Parser(std::vector<Token> tokens);
-    parse();
+    void parse();
 };
 
 #endif
