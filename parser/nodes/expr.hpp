@@ -11,8 +11,20 @@ using std::shared_ptr;
 #define en_sh(Type) public std::enable_shared_from_this<Type>
 
 
+class Binary;
+class Unary;
+class Grouping;
+class Literal;
+
+
 // visitor list
-class ExprVisitor;
+class ExprVisitor {
+public:
+    virtual Val visit_binary(shared_ptr<Binary> binary);
+    virtual Val visit_unary(shared_ptr<Unary> unary);
+    virtual Val visit_grouping(shared_ptr<Grouping> grouping);
+    virtual Val visit_literal(shared_ptr<Literal> literal);
+};
 
 
 // expr list
@@ -72,16 +84,6 @@ public:
     Val accept(ExprVisitor visitor) {
         return visitor.visit_literal(this->shared_from_this());
     }
-};
-
-
-// visitor list
-class ExprVisitor {
-public:
-    virtual Val visit_binary(shared_ptr<Binary> binary);
-    virtual Val visit_unary(shared_ptr<Unary> unary);
-    virtual Val visit_grouping(shared_ptr<Grouping> grouping);
-    virtual Val visit_literal(shared_ptr<Literal> literal);
 };
 
 #undef en_sh
