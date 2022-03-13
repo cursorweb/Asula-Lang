@@ -86,10 +86,10 @@ public:
 template <typename C>
 class ExprVisitor {
 public:
-    virtual Val visit_binary(shared_ptr<Binary<C>> binary);
-    virtual Val visit_unary(shared_ptr<Unary<C>> unary);
-    virtual Val visit_grouping(shared_ptr<Grouping<C>> grouping);
-    virtual Val visit_literal(shared_ptr<Literal<C>> literal);
+    virtual C visit_binary(shared_ptr<Binary<C>> binary);
+    virtual C visit_unary(shared_ptr<Unary<C>> unary);
+    virtual C visit_grouping(shared_ptr<Grouping<C>> grouping);
+    virtual C visit_literal(shared_ptr<Literal<C>> literal);
 };
 
 #undef en_sh
