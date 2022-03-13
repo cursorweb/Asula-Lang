@@ -11,6 +11,11 @@ Val::Val(double val) {
     number = val;
 }
 
+Val::Val(bool val) {
+    type = Bool;
+    boolean = val;
+}
+
 Val::Val() {
     type = Null;
 }

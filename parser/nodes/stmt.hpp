@@ -5,15 +5,13 @@
 
 
 // visitor list
-template<typename C>
 class StmtVisitor;
 
 
 // stmt list
-template<typename C>
 class Stmt {
 public:
-    virtual void accept(StmtVisitor<C> visitor);
+    virtual void accept(StmtVisitor visitor);
 };
 
 
@@ -21,7 +19,6 @@ public:
 
 
 // visitor list
-template<typename C>
 class StmtVisitor {
 public:
     // virtual C visit();

@@ -9,6 +9,7 @@ public:
     typedef enum Type {
         String,
         Number,
+        Bool,
         Null
     } Type;
 
@@ -16,9 +17,11 @@ public:
 
     std::string string;
     double number;
+    bool boolean;
 
     Val(std::string val);
     Val(double val);
+    Val(bool val);
     Val();
 };
 

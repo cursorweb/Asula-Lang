@@ -8,92 +8,81 @@
 
 using std::shared_ptr;
 
+#define en_sh(Type) public std::enable_shared_from_this<Type>
+
 
 // visitor list
-template<typename C>
 class ExprVisitor;
 
 
 // expr list
-template<typename C>
 class Expr {
 public:
-    virtual C accept(ExprVisitor<C> visitor);
+    virtual Val accept(ExprVisitor visitor);
 };
 
 
 // nodes
-template<typename C>
-class Binary : public Expr<C> {
+class Binary : public Expr, en_sh(Binary) {
 public:
-    shared_ptr<Expr<C>> left;
+    shared_ptr<Expr> left;
     Token op;
-    shared_ptr<Expr<C>> right;
+    shared_ptr<Expr> right;
 
-    Binary(shared_ptr<Expr<C>> left, Token op, shared_ptr<Expr<C>> right) {
-        this->left = left;
-        this->op = op;
-        this->right = right;
-    }
+    Binary(shared_ptr<Expr> _left, Token _op, shared_ptr<Expr> _right)
+        : left(_left), right(_right), op(_op) {}
 
-    C accept(ExprVisitor<C> visitor) {
-        visitor.visit_binary(this);
+    Val accept(ExprVisitor visitor) {
+        return visitor.visit_binary(this->shared_from_this());
     }
 };
 
-template<typename C>
-class Unary : public Expr<C> {
+class Unary : public Expr, en_sh(Unary) {
 public:
     Token op;
-    shared_ptr<Expr<C>> right;
+    shared_ptr<Expr> right;
 
-    Unary(Token op, shared_ptr<Expr<C>> right) {
-        this->op = op;
-        this->right = right;
-    }
+    Unary(Token _op, shared_ptr<Expr> _right)
+        : op(_op), right(_right) {}
 
-    C accept(ExprVisitor<C> visitor) {
-        visitor.visit_unary(this);
+    Val accept(ExprVisitor visitor) {
+        return visitor.visit_unary(this->shared_from_this());
     }
 };
 
-template<typename C>
-class Grouping : public Expr<C> {
+class Grouping : public Expr, en_sh(Grouping) {
 public:
-    shared_ptr<Expr<C>> val;
+    shared_ptr<Expr> val;
 
-    Grouping(shared_ptr<Expr<C>> val) {
-        this->val = val;
-    }
+    Grouping(shared_ptr<Expr> _val)
+        : val(_val) {}
 
-    C accept(ExprVisitor<C> visitor) {
-        visitor.visit_grouping(this);
+    Val accept(ExprVisitor visitor) {
+        return visitor.visit_grouping(this->shared_from_this());
     }
 };
 
-template<typename C>
-class Literal : public Expr<C> {
+class Literal : public Expr, en_sh(Literal) {
 public:
     Val val;
 
-    Literal(Val val) {
-        this->val = val;
-    }
+    Literal(Val _val)
+        : val(_val) {}
 
-    C accept(ExprVisitor<C> visitor) {
-        visitor.visit_literal(this);
+    Val accept(ExprVisitor visitor) {
+        return visitor.visit_literal(this->shared_from_this());
     }
 };
 
 
 // visitor list
-template<typename C>
 class ExprVisitor {
 public:
-    virtual C visit_binary(Binary<C> binary);
-    virtual C visit_unary(Unary<C> unary);
-    virtual C visit_grouping(Grouping<C> grouping);
-    virtual C visit_literal(Literal<C> literal);
+    virtual Val visit_binary(shared_ptr<Binary> binary);
+    virtual Val visit_unary(shared_ptr<Unary> unary);
+    virtual Val visit_grouping(shared_ptr<Grouping> grouping);
+    virtual Val visit_literal(shared_ptr<Literal> literal);
 };
 
+#undef en_sh
 #endif
