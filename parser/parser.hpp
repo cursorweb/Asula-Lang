@@ -12,7 +12,7 @@
 
 using std::shared_ptr;
 
-typedef shared_ptr<Expr> expr_p;
+typedef shared_ptr<Expr<Val>> expr_p;
 
 
 class Parser {
@@ -38,7 +38,7 @@ class Parser {
     void next();
 public:
     Parser(std::vector<Token> tokens);
-    shared_ptr<Expr> parse();
+    expr_p parse();
 };
 
 #endif

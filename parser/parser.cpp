@@ -33,7 +33,7 @@ expr_p Parser::comparison() {
         Token op = prev();
         expr_p right = add();
 
-        left = expr_p(new Binary(left, op, right));
+        left = expr_p(new Binary<Val>(left, op, right));
     }
 
     return left;
@@ -77,13 +77,13 @@ expr_p Parser::unary() {
 }
 
 expr_p Parser::primary() {
-    if (consume(TType::False)) return expr_p(new Literal(false));
-    if (consume(TType::True)) return expr_p(new Literal(true));
+    if (consume(TType::False)) return expr_p(new Literal<Val>(Val(false)));
+    if (consume(TType::True)) return expr_p(new Literal<Val>(Val(true)));
 
-    if (consume(TType::Number) || consume(TType::String)) return expr_p(new Literal(prev().val));
+    if (consume(TType::Number) || consume(TType::String)) return expr_p(new Literal<Val>(prev().val));
 
     if (consume(TType::LParen)) {
-        if (consume(TType::RParen)) return expr_p(new Literal(Val()));
+        if (consume(TType::RParen)) return expr_p(new Literal<Val>(Val()));
 
         expr_p val = expr();
         expect(TType::RParen, "Expected ')' after grouping.");
